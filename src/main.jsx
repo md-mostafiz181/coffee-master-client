@@ -7,21 +7,22 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Root from './components/Root/Root';
+// import Root from './components/Root/Root';
 
-import Home from './components/Home/Home';
+// import Home from './components/Home/Home';
 import AddCoffee from './components/AddCoffee/AddCoffee';
 import UpdateCoffee from './components/UpdateCoffee/UpdateCoffee';
+// import Coffees from './components/Coffees/Coffees';
+import App from './App';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root></Root>,
+    element: <App></App>,
+    loader:()=>fetch("http://localhost:5000/coffees"),
+    
     children:[
-      {
-        path:"/",
-        element:<Home></Home>
-      },
+
       {
         path:"/addCoffee",
         element:<AddCoffee></AddCoffee>
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
       {
         path:"/updateCoffee",
         element:<UpdateCoffee></UpdateCoffee>
-      }
+      },
+
     ]
   },
 ]);
